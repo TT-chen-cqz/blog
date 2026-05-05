@@ -489,8 +489,8 @@
         const domMode = document.documentElement.getAttribute("data-theme");
         const defaultTheme = { dark: 'dark', light: 'light' };
         const customTheme = {
-          dark: '' ? '' : new URL('/css/giscus_reimu_dark.css', window.location.origin).href,
-          light:'' ? '' : new URL('/css/giscus_reimu_light.css', window.location.origin).href
+          dark: 'dark' ? 'dark' : new URL('/css/giscus_reimu_dark.css', window.location.origin).href,
+          light:'light' ? 'light' : new URL('/css/giscus_reimu_light.css', window.location.origin).href
         }; 
         const hasGiscusCorsHeader = async (url) => {
           if (!url) return false;
