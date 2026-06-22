@@ -9,7 +9,7 @@
   
   <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_ex15nbittbh';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://example.com';window.REIMU_CONFIG.relative = '/';</script>
   <title>
-    404 | TT&#39;s Blog
+    欧几里得算法 | TT&#39;s Blog
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media='all'">
@@ -17,19 +17,20 @@
     
 <link rel="stylesheet" href="/css/loader.css">
 
-    <meta name="description" content="页面找不到了哦！！！ 你可以点击此处返回首页">
-<meta property="og:type" content="website">
-<meta property="og:title" content="404">
-<meta property="og:url" content="http://example.com/404.html">
+    <meta name="description" content="定理 对于任意 222 个正整数 aaa 与 bbb，有 gcd⁡(a,b)&#x3D;gcd⁡(b,amod  b)\gcd(a, b) &#x3D; \gcd(b, a \mod b)gcd(a,b)&#x3D;gcd(b,amodb)。  示例代码 123int gcd(int a, int b) &#123;    return (b&#x3D;&#x3D;0) ? a : gcd(b, a%b);&#125;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="欧几里得算法">
+<meta property="og:url" content="http://example.com/2026/06/22/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="TT&#39;s Blog">
-<meta property="og:description" content="页面找不到了哦！！！ 你可以点击此处返回首页">
+<meta property="og:description" content="定理 对于任意 222 个正整数 aaa 与 bbb，有 gcd⁡(a,b)&#x3D;gcd⁡(b,amod  b)\gcd(a, b) &#x3D; \gcd(b, a \mod b)gcd(a,b)&#x3D;gcd(b,amodb)。  示例代码 123int gcd(int a, int b) &#123;    return (b&#x3D;&#x3D;0) ? a : gcd(b, a%b);&#125;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/banner.webp">
-<meta property="article:published_time" content="2025-08-23T08:25:37.000Z">
-<meta property="article:modified_time" content="2025-08-23T08:30:38.897Z">
+<meta property="article:published_time" content="2026-06-22T11:34:02.000Z">
+<meta property="article:modified_time" content="2026-06-22T11:48:44.826Z">
 <meta property="article:author" content="TT">
+<meta property="article:tag" content="作业">
+<meta property="article:tag" content="欧几里得算法">
+<meta property="article:tag" content="证明">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/banner.webp">
     <link rel="shortcut icon" href="/images/favicon.ico">
   
 <link rel="stylesheet" href="/css/style.css">
@@ -125,13 +126,13 @@
   </nav>
 </div>
 <header id="header" aria-label="Site header">
-      <picture>
-      </picture>
-        <img  fetchpriority="high" src="/images/banner.jpg" alt="404">
+        <picture>
+        </picture>
+          <img  fetchpriority="high" src="/images/banner.jpg" alt="欧几里得算法">
   <div id="header-outer">
     <div id="header-title">
           <span id="logo">
-            <h1 data-aos="slide-up">404</h1>
+            <h1 data-aos="slide-up">欧几里得算法</h1>
           </span>
         <h2 id="subtitle-wrap" data-aos="slide-down">
         </h2>
@@ -141,10 +142,15 @@
 
         <div id="content" aria-label="Page content"  class="sidebar-right" >
           <aside id="sidebar" aria-label="Sidebar">
-  <div class="sidebar-wrapper-container ">
+  <div class="sidebar-wrapper-container sticky">
   <div class="sidebar-wrapper">
     <div class="sidebar-wrap" data-aos="fade-up">
-        <div class="sidebar-author">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text"> 定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text"> 示例代码</span></a></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
   <img data-src="/avatar/avatar.png" data-sizes="auto" alt="TT" class="lazyload">
   <div class="sidebar-author-name">TT</div>
   <div class="sidebar-description"></div>
@@ -204,7 +210,11 @@
         <div class="sidebar-menu-link">友链</div>
       </div>
 </div>
-
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
     </div>
   </div>
   <div class="sidebar-widget">
@@ -212,13 +222,13 @@
   </div>
 </aside>
 
-          <section id="main" aria-label="Main content"><article id="page-" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+          <section id="main" aria-label="Main content"><article id="post-欧几里得算法" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner" data-aos="fade-up">
     <div class="article-meta">
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
-    <time datetime="2025-08-23T08:25:37.000Z" itemprop="datePublished">2025-08-23</time>
-    <time style="display: none;" id="post-update-time">2025-08-23</time>
+    <time datetime="2026-06-22T11:34:02.000Z" itemprop="datePublished">2026-06-22</time>
+    <time style="display: none;" id="post-update-time">2026-06-22</time>
   </span>
 </div>
 
@@ -227,16 +237,29 @@
     <div class="hr-line"></div>
     
     <div class="e-content article-entry" itemprop="articleBody">
-        <p>页面找不到了哦！！！</p>
-<p>你可以点击<a href="/">此处</a>返回首页</p>
-
+        <h2 id="定理"><a class="markdownIt-Anchor" href="#定理"></a> 定理</h2>
+<p>对于任意 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> 个正整数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span> 与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>，有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>gcd</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo stretchy="false">)</mo><mo>=</mo><mi>gcd</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>b</mi><mo separator="true">,</mo><mi>a</mi><mspace></mspace><mspace width="0.6667em"/><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mtext> </mtext><mtext> </mtext><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\gcd(a, b) = \gcd(b, a \mod b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span style="margin-right:0.0139em;">g</span>cd</span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span style="margin-right:0.0139em;">g</span>cd</span><span class="mopen">(</span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">a</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.6667em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mclose">)</span></span></span></span>。</p>
+<h2 id="示例代码"><a class="markdownIt-Anchor" href="#示例代码"></a> 示例代码</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (b==<span class="number">0</span>) ? a : <span class="built_in">gcd</span>(b, a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
     <footer class="article-footer">
-      
-      
+        <a class="article-category-link" href="/categories/%E4%BD%9C%E4%B8%9A/" title="作业" data-aos="zoom-in">作业</a>
+
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E4%BD%9C%E4%B8%9A/" rel="tag" title="作业">作业</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/" rel="tag" title="欧几里得算法">欧几里得算法</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E8%AF%81%E6%98%8E/" rel="tag" title="证明">证明</a></li></ul>
+
     </footer>
   </div>
-  
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+    <div class="article-nav-link-wrap right">
+          <img data-src="https://images.wallpaperscraft.com/image/single/girl_smile_astronaut_848029_1280x720.jpg" data-sizes="auto" alt="P14127 [SCCPC 2021] K-skip Permutation 题解" class="lazyload">
+      <a href="/2025/10/08/P14127-SCCPC-2021-K-skip-Permutation-%E9%A2%98%E8%A7%A3/" aria-label="后一篇: P14127 [SCCPC 2021] K-skip Permutation 题解"  title="后一篇: P14127 [SCCPC 2021] K-skip Permutation 题解"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          P14127 [SCCPC 2021] K-skip Permutation 题解
+      </h3>
+    </div>
+  </nav>
+
 </article>
 
   <section id="comments" data-aos="fade-up">
@@ -300,7 +323,12 @@
       </div>
       <nav id="mobile-nav" aria-label="Mobile navigation">
   <div class="sidebar-wrap">
-      <div class="sidebar-author">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text"> 定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text"> 示例代码</span></a></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
   <img data-src="/avatar/avatar.png" data-sizes="auto" alt="TT" class="lazyload">
   <div class="sidebar-author-name">TT</div>
   <div class="sidebar-description"></div>
@@ -360,8 +388,12 @@
         <div class="sidebar-menu-link">友链</div>
       </div>
 </div>
-
+</div>
   </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
 </nav>
 
     </div>
@@ -424,13 +456,13 @@
       <script data-pjax>
         window.REIMU_POST = {
           author: "TT",
-          title: "404",
-          url: "http://example.com/404.html",
+          title: "欧几里得算法",
+          url: "http://example.com/2026/06/22/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/",
           excerpt: "",
           description: "",
-          stripContent: "页面找不到了哦！！！ 你可以点击此处返回首页 ",
-          date: "Sat Aug 23 2025 16:25:37 GMT+0800",
-          updated: "Sat Aug 23 2025 16:30:38 GMT+0800",
+          stripContent: " 定理 对于任意 222 个正整数 aaa 与 bbb，有 gcd⁡(a,b)=gcd⁡(b,amod  b)\gcd(a, b) = \gcd(b, a \mod b)gcd(a,b)=gcd(b,amodb)。  示例代码 123int gcd(int a, int b) &amp;#123;    return (b==0) ? a : gcd(b, a%b);&amp;#125;",
+          date: "Mon Jun 22 2026 19:34:02 GMT+0800",
+          updated: "Mon Jun 22 2026 19:48:44 GMT+0800",
           cover: "/images/banner.jpg",
         };
       </script>
