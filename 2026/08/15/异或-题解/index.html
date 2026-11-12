@@ -23,10 +23,11 @@
 <meta property="og:description" content="题目大意 有 222 个长度为 NNN 的数组 AAA 和 BBB，可以任意排列 BBB 数组，求出一个非负整数 xxx，满足： Ai⊕Bi′&#x3D;xA_i \oplus B&#x27;_i &#x3D; x Ai​⊕Bi′​&#x3D;x 此处 ⊕\oplus⊕ 表示异或，B′B&#x27;B′ 为重新排列后的 BBB。 找出所有 xxx 并按照从小到大输出。  意外发现 在正解之前，我先说一下我和 @naijil">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-08-15T11:08:17.000Z">
-<meta property="article:modified_time" content="2026-08-16T02:56:01.322Z">
+<meta property="article:modified_time" content="2026-11-12T12:31:37.467Z">
 <meta property="article:author" content="TT">
 <meta property="article:tag" content="异或">
 <meta property="article:tag" content="题解">
+<meta property="article:tag" content="题解【详细】">
 <meta name="twitter:card" content="summary">
     <link rel="alternate" href="/atom.xml" title="TT's Blog" type="application/atom+xml">
     <link rel="shortcut icon" href="/images/icon.ico">
@@ -162,11 +163,11 @@
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">2</div>
+    <div class="sidebar-state-number">3</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">7</div>
+    <div class="sidebar-state-number">9</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -228,7 +229,7 @@
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
     <time datetime="2026-08-15T11:08:17.000Z" itemprop="datePublished">2026-08-15</time>
-    <time style="display: none;" id="post-update-time">2026-08-16</time>
+    <time style="display: none;" id="post-update-time">2026-11-12</time>
   </span>
 </div>
 
@@ -286,15 +287,15 @@ b \oplus x = a \\
 
     </div>
     <footer class="article-footer">
-        <a class="article-category-link" href="/categories/%E9%A2%98%E8%A7%A3/" title="题解" data-aos="zoom-in">题解</a>
+        <a class="article-category-link" href="/categories/%E9%A2%98%E8%A7%A3%E3%80%90%E8%AF%A6%E7%BB%86%E3%80%91/" title="题解【详细】" data-aos="zoom-in">题解【详细】</a>
 
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%BC%82%E6%88%96/" rel="tag" title="异或">异或</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag" title="题解">题解</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%BC%82%E6%88%96/" rel="tag" title="异或">异或</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag" title="题解">题解</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3%E3%80%90%E8%AF%A6%E7%BB%86%E3%80%91/" rel="tag" title="题解【详细】">题解【详细】</a></li></ul>
 
     </footer>
   </div>
     <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
       <div class="article-nav-link-wrap left">
-            <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=4" data-sizes="auto" alt="x:y 题解" class="lazyload">
+            <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=2" data-sizes="auto" alt="x:y 题解" class="lazyload">
         <a href="/2026/11/12/x-y-%E9%A2%98%E8%A7%A3/" aria-label="前一篇: x:y 题解" title="前一篇: x:y 题解"></a>
         <div class="article-nav-caption">前一篇</div>
         <h3 class="article-nav-title">
@@ -391,11 +392,11 @@ b \oplus x = a \\
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">2</div>
+    <div class="sidebar-state-number">3</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">7</div>
+    <div class="sidebar-state-number">9</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -537,7 +538,7 @@ b \oplus x = a \\
           description: "",
           stripContent: " 题目大意 有 222 个长度为 NNN 的数组 AAA 和 BBB，可以任意排列 BBB 数组，求出一个非负整数 xxx，满足： Ai⊕Bi′=xA_i \oplus B&amp;#x27;_i = x Ai​⊕Bi′​=x 此处 ⊕\oplus⊕ 表示异或，B′B&amp;#x27;B′ 为重新排列后的 BBB。 找出所有 xxx 并按照从小到大输出。  意外发现 在正解之前，我先说一下我和 @naijil 在考场上的意外发现。 在 NNN 为奇数时，如果存在 xxx 使得： Ai⊕Bi′=xA_i \op",
           date: "Sat Aug 15 2026 19:08:17 GMT+0800",
-          updated: "Sun Aug 16 2026 10:56:01 GMT+0800",
+          updated: "Thu Nov 12 2026 20:31:37 GMT+0800",
           cover: "/images/banner.png",
         };
       </script>

@@ -23,11 +23,12 @@
 <meta property="og:description" content="题目传送门 这题不难，只需要理解题目的意思就行。 首先输入天数，然后输入每天净资产变化。 之后统计每天的净资产，可以用一个数组 aaa，但要注意题目中每个曲线所在的行。 统计净资产的最大和最小值，可以用 maxnmaxnmaxn 和 minnminnminn，以求表格大小，还是要注意每个曲线所在的行，还得注意 maxnmaxnmaxn 要初始化成 −1-1−1，而 minnminnminn 是 0">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-23T08:58:21.000Z">
-<meta property="article:modified_time" content="2026-05-04T13:42:33.949Z">
+<meta property="article:modified_time" content="2026-11-12T12:31:35.603Z">
 <meta property="article:author" content="TT">
 <meta property="article:tag" content="字符串">
 <meta property="article:tag" content="模拟">
 <meta property="article:tag" content="题解">
+<meta property="article:tag" content="题解【洛谷】">
 <meta name="twitter:card" content="summary">
     <link rel="alternate" href="/atom.xml" title="TT's Blog" type="application/atom+xml">
     <link rel="shortcut icon" href="/images/icon.ico">
@@ -163,11 +164,11 @@
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">2</div>
+    <div class="sidebar-state-number">3</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">7</div>
+    <div class="sidebar-state-number">9</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -229,7 +230,7 @@
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
     <time datetime="2025-08-23T08:58:21.000Z" itemprop="datePublished">2025-08-23</time>
-    <time style="display: none;" id="post-update-time">2026-05-04</time>
+    <time style="display: none;" id="post-update-time">2026-11-12</time>
   </span>
 </div>
 
@@ -249,15 +250,15 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n,a[<span class="number">105</span>],maxn=<span class="number">-1</span>,minn=<span class="number">0</span>,p;</span><br><span class="line">string s;</span><br><span class="line"><span class="type">char</span> c[<span class="number">105</span>][<span class="number">105</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;s;</span><br><span class="line">    a[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">switch</span>(s[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;+&#x27;</span>:</span><br><span class="line">            &#123;</span><br><span class="line">                a[i<span class="number">+1</span>]=a[i]<span class="number">+1</span>;</span><br><span class="line">                maxn=<span class="built_in">max</span>(maxn,a[i]);      <span class="comment">//记当天开始时</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>:</span><br><span class="line">            &#123;</span><br><span class="line">            	a[i<span class="number">+1</span>]=a[i]<span class="number">-1</span>;</span><br><span class="line">                minn=<span class="built_in">min</span>(minn,a[i<span class="number">+1</span>]);    <span class="comment">//记当天结束时</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;=&#x27;</span>:</span><br><span class="line">            &#123;</span><br><span class="line">            	a[i<span class="number">+1</span>]=a[i];</span><br><span class="line">                maxn=<span class="built_in">max</span>(maxn,a[i<span class="number">+1</span>]);    <span class="comment">//说不定比向上曲线更高</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    p=maxn-minn<span class="number">+1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;p;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            c[i][j]=<span class="string">&#x27;.&#x27;</span>;                  <span class="comment">//初始化 </span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">switch</span>(s[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;+&#x27;</span>:</span><br><span class="line">            &#123;</span><br><span class="line">            	c[maxn-a[i]][i]=<span class="string">&#x27;/&#x27;</span>;</span><br><span class="line">            	<span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>:</span><br><span class="line">            &#123;</span><br><span class="line">            	c[maxn-a[i<span class="number">+1</span>]][i]=<span class="string">&#x27;\\&#x27;</span>;   <span class="comment">//注意转义符 </span></span><br><span class="line">            	<span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;=&#x27;</span>:</span><br><span class="line">            &#123;</span><br><span class="line">            	c[maxn-a[i]][i]=<span class="string">&#x27;_&#x27;</span>;</span><br><span class="line">            	<span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;p;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;c[i][j]; </span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
     <footer class="article-footer">
-        <a class="article-category-link" href="/categories/%E9%A2%98%E8%A7%A3/" title="题解" data-aos="zoom-in">题解</a>
+        <a class="article-category-link" href="/categories/%E9%A2%98%E8%A7%A3%E3%80%90%E6%B4%9B%E8%B0%B7%E3%80%91/" title="题解【洛谷】" data-aos="zoom-in">题解【洛谷】</a>
 
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag" title="字符串">字符串</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag" title="模拟">模拟</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag" title="题解">题解</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag" title="字符串">字符串</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag" title="模拟">模拟</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag" title="题解">题解</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3%E3%80%90%E6%B4%9B%E8%B0%B7%E3%80%91/" rel="tag" title="题解【洛谷】">题解【洛谷】</a></li></ul>
 
     </footer>
   </div>
     <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
       <div class="article-nav-link-wrap left">
-            <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=10" data-sizes="auto" alt="P13428 [GCJ 2009 Qualification] Alien Language 题解" class="lazyload">
+            <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=7" data-sizes="auto" alt="P13428 [GCJ 2009 Qualification] Alien Language 题解" class="lazyload">
         <a href="/2025/09/20/P13428-GCJ-2009-Qualification-Alien-Language-%E9%A2%98%E8%A7%A3/" aria-label="前一篇: P13428 [GCJ 2009 Qualification] Alien Language 题解" title="前一篇: P13428 [GCJ 2009 Qualification] Alien Language 题解"></a>
         <div class="article-nav-caption">前一篇</div>
         <h3 class="article-nav-title">
@@ -346,11 +347,11 @@
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">2</div>
+    <div class="sidebar-state-number">3</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">7</div>
+    <div class="sidebar-state-number">9</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -492,7 +493,7 @@
           description: "",
           stripContent: "题目传送门 这题不难，只需要理解题目的意思就行。 首先输入天数，然后输入每天净资产变化。 之后统计每天的净资产，可以用一个数组 aaa，但要注意题目中每个曲线所在的行。 统计净资产的最大和最小值，可以用 maxnmaxnmaxn 和 minnminnminn，以求表格大小，还是要注意每个曲线所在的行，还得注意 maxnmaxnmaxn 要初始化成 −1-1−1，而 minnminnminn 是 000，这样在 maxnmaxnmaxn 或 minnminnminn 没有被记录时，默认值就是图表的",
           date: "Sat Aug 23 2025 16:58:21 GMT+0800",
-          updated: "Mon May 04 2026 21:42:33 GMT+0800",
+          updated: "Thu Nov 12 2026 20:31:35 GMT+0800",
           cover: "/images/banner.png",
         };
       </script>

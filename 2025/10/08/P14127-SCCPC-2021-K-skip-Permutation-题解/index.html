@@ -23,10 +23,11 @@
 <meta property="og:description" content="题目传送门  思路： 首先，不难看出，如果 k&gt;nk &gt; nk&gt;n，那么 f(P,k)f(P,k)f(P,k) 肯定为 000，所以可以随便输出（比如从小到大）。 而 k≤nk \le nk≤n 时，我们可以通过每个数除以 kkk 的余数进行分类，即除以 kkk 余数相同的数，两两差 kkk，要放在一起。而且这样可以 111 到 nnn 的每个整数恰好出现一次。 最后还得注意行末">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-10-08T10:11:59.000Z">
-<meta property="article:modified_time" content="2026-05-04T13:48:55.717Z">
+<meta property="article:modified_time" content="2026-11-12T12:31:30.585Z">
 <meta property="article:author" content="TT">
 <meta property="article:tag" content="构造">
 <meta property="article:tag" content="题解">
+<meta property="article:tag" content="题解【洛谷】">
 <meta name="twitter:card" content="summary">
     <link rel="alternate" href="/atom.xml" title="TT's Blog" type="application/atom+xml">
     <link rel="shortcut icon" href="/images/icon.ico">
@@ -162,11 +163,11 @@
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">2</div>
+    <div class="sidebar-state-number">3</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">7</div>
+    <div class="sidebar-state-number">9</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -228,7 +229,7 @@
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
     <time datetime="2025-10-08T10:11:59.000Z" itemprop="datePublished">2025-10-08</time>
-    <time style="display: none;" id="post-update-time">2026-05-04</time>
+    <time style="display: none;" id="post-update-time">2026-11-12</time>
   </span>
 </div>
 
@@ -248,15 +249,15 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n,k;</span><br><span class="line"><span class="type">int</span> a[<span class="number">1000005</span>],tmp=<span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="keyword">if</span>(k&gt;n)					<span class="comment">//0个，随便来 </span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(;tmp&lt;=n;tmp++)</span><br><span class="line">        &#123;</span><br><span class="line">            a[tmp]=tmp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>					<span class="comment">//按余数来</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;k;i++)<span class="comment">//余数的可能性</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j*k+i&lt;=n;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(j*k+i&gt;<span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    a[tmp++]=j*k+i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;a[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;a[n];				<span class="comment">//无空格</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
     <footer class="article-footer">
-        <a class="article-category-link" href="/categories/%E9%A2%98%E8%A7%A3/" title="题解" data-aos="zoom-in">题解</a>
+        <a class="article-category-link" href="/categories/%E9%A2%98%E8%A7%A3%E3%80%90%E6%B4%9B%E8%B0%B7%E3%80%91/" title="题解【洛谷】" data-aos="zoom-in">题解【洛谷】</a>
 
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%9E%84%E9%80%A0/" rel="tag" title="构造">构造</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag" title="题解">题解</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%9E%84%E9%80%A0/" rel="tag" title="构造">构造</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag" title="题解">题解</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3%E3%80%90%E6%B4%9B%E8%B0%B7%E3%80%91/" rel="tag" title="题解【洛谷】">题解【洛谷】</a></li></ul>
 
     </footer>
   </div>
     <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
       <div class="article-nav-link-wrap left">
-            <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=3" data-sizes="auto" alt="题单推荐" class="lazyload">
+            <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=4" data-sizes="auto" alt="题单推荐" class="lazyload">
         <a href="/2026/07/18/%E9%A2%98%E5%8D%95%E6%8E%A8%E8%8D%90/" aria-label="前一篇: 题单推荐" title="前一篇: 题单推荐"></a>
         <div class="article-nav-caption">前一篇</div>
         <h3 class="article-nav-title">
@@ -264,7 +265,7 @@
         </h3>
       </div>
     <div class="article-nav-link-wrap right">
-          <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=9" data-sizes="auto" alt="P13428 [GCJ 2009 Qualification] Alien Language 题解" class="lazyload">
+          <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=8" data-sizes="auto" alt="P13428 [GCJ 2009 Qualification] Alien Language 题解" class="lazyload">
       <a href="/2025/09/20/P13428-GCJ-2009-Qualification-Alien-Language-%E9%A2%98%E8%A7%A3/" aria-label="后一篇: P13428 [GCJ 2009 Qualification] Alien Language 题解"  title="后一篇: P13428 [GCJ 2009 Qualification] Alien Language 题解"></a>
       <div class="article-nav-caption">后一篇</div>
       <h3 class="article-nav-title">
@@ -353,11 +354,11 @@
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">2</div>
+    <div class="sidebar-state-number">3</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">7</div>
+    <div class="sidebar-state-number">9</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -499,7 +500,7 @@
           description: "",
           stripContent: "题目传送门  思路： 首先，不难看出，如果 k&amp;gt;nk &amp;gt; nk&amp;gt;n，那么 f(P,k)f(P,k)f(P,k) 肯定为 000，所以可以随便输出（比如从小到大）。 而 k≤nk \le nk≤n 时，我们可以通过每个数除以 kkk 的余数进行分类，即除以 kkk 余数相同的数，两两差 kkk，要放在一起。而且这样可以 111 到 nnn 的每个整数恰好出现一次。 最后还得注意行末不能有空格！  AC code: 123456789101112131415161718192021",
           date: "Wed Oct 08 2025 18:11:59 GMT+0800",
-          updated: "Mon May 04 2026 21:48:55 GMT+0800",
+          updated: "Thu Nov 12 2026 20:31:30 GMT+0800",
           cover: "/images/banner.png",
         };
       </script>

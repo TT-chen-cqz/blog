@@ -23,10 +23,11 @@
 <meta property="og:description" content="题目传送门  思路： 先输入三个整数和 DDD 个单词； 重复 NNN 次：  输入一个字符串 TTT； 处理字符串：用一个二维数组 GGG，用于记录每一位有哪些字母可以用，然后遍历字符串，如遇 ( 则重复将后面的所有字符统计到这一位，直到遇到 ) 为止，否则直接将该字符统计到这一位即可； 遍历每一个单词，如果该单词的每一位都是可用字母，那么 ans+1ans + 1ans+1； 输出；  AC">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-09-20T09:38:39.000Z">
-<meta property="article:modified_time" content="2026-05-04T13:48:36.538Z">
+<meta property="article:modified_time" content="2026-11-12T12:31:33.734Z">
 <meta property="article:author" content="TT">
 <meta property="article:tag" content="模拟">
 <meta property="article:tag" content="题解">
+<meta property="article:tag" content="题解【洛谷】">
 <meta name="twitter:card" content="summary">
     <link rel="alternate" href="/atom.xml" title="TT's Blog" type="application/atom+xml">
     <link rel="shortcut icon" href="/images/icon.ico">
@@ -162,11 +163,11 @@
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">2</div>
+    <div class="sidebar-state-number">3</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">7</div>
+    <div class="sidebar-state-number">9</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -228,7 +229,7 @@
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
     <time datetime="2025-09-20T09:38:39.000Z" itemprop="datePublished">2025-09-20</time>
-    <time style="display: none;" id="post-update-time">2026-05-04</time>
+    <time style="display: none;" id="post-update-time">2026-11-12</time>
   </span>
 </div>
 
@@ -252,15 +253,15 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> l,d,n,s,ans;</span><br><span class="line">string t,a[<span class="number">5005</span>];</span><br><span class="line"><span class="type">bool</span> g[<span class="number">505</span>][<span class="number">30</span>],q;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin&gt;&gt;l&gt;&gt;d&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=d;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;t;</span><br><span class="line">        <span class="comment">//初始化变量和数组</span></span><br><span class="line">        s=<span class="number">0</span>;                      <span class="comment">//位数</span></span><br><span class="line">        ans=<span class="number">0</span>;                    <span class="comment">//答案</span></span><br><span class="line">        <span class="built_in">memset</span>(g,<span class="literal">false</span>,<span class="keyword">sizeof</span>(g));</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;t.<span class="built_in">size</span>();j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(t[j]==<span class="string">&#x27;(&#x27;</span>)         <span class="comment">//遇到括号时</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">while</span>(t[++j]!=<span class="string">&#x27;)&#x27;</span>)<span class="comment">//重复直到遇到右括号</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">//设置为true（可用）</span></span><br><span class="line">                    g[s][t[j]-<span class="string">&#x27;a&#x27;</span>]=<span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                s++;              <span class="comment">//注意是在同一位上，需要等括号内内容统计完再让位数+1</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//直接设置一个字母为true（可用）</span></span><br><span class="line">                g[s++][t[j]-<span class="string">&#x27;a&#x27;</span>]=<span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=d;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            q=<span class="literal">true</span>;               <span class="comment">//标记</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;l;k++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(!g[k][a[j][k]-<span class="string">&#x27;a&#x27;</span>])</span><br><span class="line">                &#123;</span><br><span class="line">                    q=<span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;        <span class="comment">//不符合直接退出</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(q)</span><br><span class="line">            &#123;</span><br><span class="line">                ans++;            <span class="comment">//答案+1</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//输出</span></span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;Case #&quot;</span>&lt;&lt;i&lt;&lt;<span class="string">&quot;: &quot;</span>&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
     <footer class="article-footer">
-        <a class="article-category-link" href="/categories/%E9%A2%98%E8%A7%A3/" title="题解" data-aos="zoom-in">题解</a>
+        <a class="article-category-link" href="/categories/%E9%A2%98%E8%A7%A3%E3%80%90%E6%B4%9B%E8%B0%B7%E3%80%91/" title="题解【洛谷】" data-aos="zoom-in">题解【洛谷】</a>
 
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag" title="模拟">模拟</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag" title="题解">题解</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag" title="模拟">模拟</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag" title="题解">题解</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3%E3%80%90%E6%B4%9B%E8%B0%B7%E3%80%91/" rel="tag" title="题解【洛谷】">题解【洛谷】</a></li></ul>
 
     </footer>
   </div>
     <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
       <div class="article-nav-link-wrap left">
-            <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=8" data-sizes="auto" alt="P14127 [SCCPC 2021] K-skip Permutation 题解" class="lazyload">
+            <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=10" data-sizes="auto" alt="P14127 [SCCPC 2021] K-skip Permutation 题解" class="lazyload">
         <a href="/2025/10/08/P14127-SCCPC-2021-K-skip-Permutation-%E9%A2%98%E8%A7%A3/" aria-label="前一篇: P14127 [SCCPC 2021] K-skip Permutation 题解" title="前一篇: P14127 [SCCPC 2021] K-skip Permutation 题解"></a>
         <div class="article-nav-caption">前一篇</div>
         <h3 class="article-nav-title">
@@ -268,7 +269,7 @@
         </h3>
       </div>
     <div class="article-nav-link-wrap right">
-          <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=2" data-sizes="auto" alt="P13426 [COCI 2020/2021 #2] Crtanje 题解" class="lazyload">
+          <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=9" data-sizes="auto" alt="P13426 [COCI 2020/2021 #2] Crtanje 题解" class="lazyload">
       <a href="/2025/08/23/P13426-COCI-2020-2021-2-Crtanje-%E9%A2%98%E8%A7%A3/" aria-label="后一篇: P13426 [COCI 2020/2021 #2] Crtanje 题解"  title="后一篇: P13426 [COCI 2020/2021 #2] Crtanje 题解"></a>
       <div class="article-nav-caption">后一篇</div>
       <h3 class="article-nav-title">
@@ -357,11 +358,11 @@
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">2</div>
+    <div class="sidebar-state-number">3</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">7</div>
+    <div class="sidebar-state-number">9</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -503,7 +504,7 @@
           description: "",
           stripContent: "题目传送门  思路： 先输入三个整数和 DDD 个单词； 重复 NNN 次：  输入一个字符串 TTT； 处理字符串：用一个二维数组 GGG，用于记录每一位有哪些字母可以用，然后遍历字符串，如遇 ( 则重复将后面的所有字符统计到这一位，直到遇到 ) 为止，否则直接将该字符统计到这一位即可； 遍历每一个单词，如果该单词的每一位都是可用字母，那么 ans+1ans + 1ans+1； 输出；  AC code： 12345678910111213141516171819202122232425262",
           date: "Sat Sep 20 2025 17:38:39 GMT+0800",
-          updated: "Mon May 04 2026 21:48:36 GMT+0800",
+          updated: "Thu Nov 12 2026 20:31:33 GMT+0800",
           cover: "/images/banner.png",
         };
       </script>
