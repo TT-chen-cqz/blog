@@ -16,15 +16,15 @@
     
 <link rel="stylesheet" href="/css/loader.css">
 
-    <meta name="description" content="原题目  x:y  OJ PID：P5127 时空限制：1000ms &#x2F; 256MiB  题目描述 给定两个序列 a1,a2,…,ana_1,a_2,\ldots,a_na1​,a2​,…,an​ 和 b1,b2,…,bmb_1,b_2,\ldots,b_mb1​,b2​,…,bm​。 请你确定一个整数 ddd，然后对 a,ba,ba,b 两个序列分别计算分数。序列的分数计算方式如下：序列中每有">
+    <meta name="description" content="x:y 题解  原题目  x:y  OJ PID：P5127 时空限制：1000ms &#x2F; 256MiB  题目描述 给定两个序列 a1,a2,…,ana_1,a_2,\ldots,a_na1​,a2​,…,an​ 和 b1,b2,…,bmb_1,b_2,\ldots,b_mb1​,b2​,…,bm​。 请你确定一个整数 ddd，然后对 a,ba,ba,b 两个序列分别计算分数。序列的分数计算方式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="x:y 题解">
 <meta property="og:url" content="http://example.com/2026/11/12/x-y-%E9%A2%98%E8%A7%A3/index.html">
 <meta property="og:site_name" content="TT&#39;s Blog">
-<meta property="og:description" content="原题目  x:y  OJ PID：P5127 时空限制：1000ms &#x2F; 256MiB  题目描述 给定两个序列 a1,a2,…,ana_1,a_2,\ldots,a_na1​,a2​,…,an​ 和 b1,b2,…,bmb_1,b_2,\ldots,b_mb1​,b2​,…,bm​。 请你确定一个整数 ddd，然后对 a,ba,ba,b 两个序列分别计算分数。序列的分数计算方式如下：序列中每有">
+<meta property="og:description" content="x:y 题解  原题目  x:y  OJ PID：P5127 时空限制：1000ms &#x2F; 256MiB  题目描述 给定两个序列 a1,a2,…,ana_1,a_2,\ldots,a_na1​,a2​,…,an​ 和 b1,b2,…,bmb_1,b_2,\ldots,b_mb1​,b2​,…,bm​。 请你确定一个整数 ddd，然后对 a,ba,ba,b 两个序列分别计算分数。序列的分数计算方式">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-11-12T09:52:50.000Z">
-<meta property="article:modified_time" content="2026-11-12T09:53:39.578Z">
+<meta property="article:modified_time" content="2026-11-12T09:58:20.985Z">
 <meta property="article:author" content="TT">
 <meta property="article:tag" content="双指针">
 <meta property="article:tag" content="题解">
@@ -148,7 +148,7 @@
     <div class="sidebar-wrap" data-aos="fade-up">
           <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E9%A2%98%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text"> 原题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xy"><span class="toc-number">1.1.</span> <span class="toc-text"> x:y</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%A4%A7%E6%84%8F"><span class="toc-number">2.</span> <span class="toc-text"> 题目大意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text"> 题目分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#part-a"><span class="toc-number">3.1.</span> <span class="toc-text"> PART A</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#part-b"><span class="toc-number">3.2.</span> <span class="toc-text"> PART B</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">3.3.</span> <span class="toc-text"> 时间复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ac-code"><span class="toc-number">4.</span> <span class="toc-text"> AC CODE</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#xy-%E9%A2%98%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text"> x:y 题解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text"> 原题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xy"><span class="toc-number">1.1.1.</span> <span class="toc-text"> x:y</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%A4%A7%E6%84%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> 题目大意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text"> 题目分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#part-a"><span class="toc-number">1.3.1.</span> <span class="toc-text"> PART A</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#part-b"><span class="toc-number">1.3.2.</span> <span class="toc-text"> PART B</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 时间复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ac-code"><span class="toc-number">1.4.</span> <span class="toc-text"> AC CODE</span></a></li></ol></li></ol>
 </div>
 </div>
           <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -238,7 +238,8 @@
     <div class="hr-line"></div>
     
     <div class="e-content article-entry" itemprop="articleBody">
-        <h2 id="原题目"><a class="markdownIt-Anchor" href="#原题目"></a> 原题目</h2>
+        <h1 id="xy-题解"><a class="markdownIt-Anchor" href="#xy-题解"></a> x:y 题解</h1>
+<h2 id="原题目"><a class="markdownIt-Anchor" href="#原题目"></a> 原题目</h2>
 <h3 id="xy"><a class="markdownIt-Anchor" href="#xy"></a> x:y</h3>
 <ul>
 <li>OJ PID：<code>P5127</code></li>
@@ -337,7 +338,7 @@
   </div>
     <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
     <div class="article-nav-link-wrap right">
-          <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=4" data-sizes="auto" alt="异或 题解" class="lazyload">
+          <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=7" data-sizes="auto" alt="异或 题解" class="lazyload">
       <a href="/2026/08/15/%E5%BC%82%E6%88%96-%E9%A2%98%E8%A7%A3/" aria-label="后一篇: 异或 题解"  title="后一篇: 异或 题解"></a>
       <div class="article-nav-caption">后一篇</div>
       <h3 class="article-nav-title">
@@ -411,7 +412,7 @@
   <div class="sidebar-wrap">
         <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E9%A2%98%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text"> 原题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xy"><span class="toc-number">1.1.</span> <span class="toc-text"> x:y</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%A4%A7%E6%84%8F"><span class="toc-number">2.</span> <span class="toc-text"> 题目大意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text"> 题目分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#part-a"><span class="toc-number">3.1.</span> <span class="toc-text"> PART A</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#part-b"><span class="toc-number">3.2.</span> <span class="toc-text"> PART B</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">3.3.</span> <span class="toc-text"> 时间复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ac-code"><span class="toc-number">4.</span> <span class="toc-text"> AC CODE</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#xy-%E9%A2%98%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text"> x:y 题解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text"> 原题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xy"><span class="toc-number">1.1.1.</span> <span class="toc-text"> x:y</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%A4%A7%E6%84%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> 题目大意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text"> 题目分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#part-a"><span class="toc-number">1.3.1.</span> <span class="toc-text"> PART A</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#part-b"><span class="toc-number">1.3.2.</span> <span class="toc-text"> PART B</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 时间复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ac-code"><span class="toc-number">1.4.</span> <span class="toc-text"> AC CODE</span></a></li></ol></li></ol>
 </div>
 </div>
         <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -570,9 +571,9 @@
           url: "http://example.com/2026/11/12/x-y-%E9%A2%98%E8%A7%A3/",
           excerpt: "",
           description: "",
-          stripContent: " 原题目  x:y  OJ PID：P5127 时空限制：1000ms / 256MiB  题目描述 给定两个序列 a1,a2,…,ana_1,a_2,\ldots,a_na1​,a2​,…,an​ 和 b1,b2,…,bmb_1,b_2,\ldots,b_mb1​,b2​,…,bm​。 请你确定一个整数 ddd，然后对 a,ba,ba,b 两个序列分别计算分数。序列的分数计算方式如下：序列中每有一个数字大于等于 ddd 记 333 分，每有一个数字小于 ddd 记 222 分。 你需要使得序列",
+          stripContent: " x:y 题解  原题目  x:y  OJ PID：P5127 时空限制：1000ms / 256MiB  题目描述 给定两个序列 a1,a2,…,ana_1,a_2,\ldots,a_na1​,a2​,…,an​ 和 b1,b2,…,bmb_1,b_2,\ldots,b_mb1​,b2​,…,bm​。 请你确定一个整数 ddd，然后对 a,ba,ba,b 两个序列分别计算分数。序列的分数计算方式如下：序列中每有一个数字大于等于 ddd 记 333 分，每有一个数字小于 ddd 记 222 分。",
           date: "Thu Nov 12 2026 17:52:50 GMT+0800",
-          updated: "Thu Nov 12 2026 17:53:39 GMT+0800",
+          updated: "Thu Nov 12 2026 17:58:20 GMT+0800",
           cover: "/images/banner.png",
         };
       </script>
