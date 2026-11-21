@@ -23,11 +23,10 @@
 <meta property="og:description" content="x:y 题解  原题目  x:y  OJ PID：P5127 时空限制：1000ms &#x2F; 256MiB  题目描述 给定两个序列 a1,a2,…,ana_1,a_2,\ldots,a_na1​,a2​,…,an​ 和 b1,b2,…,bmb_1,b_2,\ldots,b_mb1​,b2​,…,bm​。 请你确定一个整数 ddd，然后对 a,ba,ba,b 两个序列分别计算分数。序列的分数计算方式">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-11-12T09:52:50.000Z">
-<meta property="article:modified_time" content="2026-11-12T12:31:28.205Z">
+<meta property="article:modified_time" content="2026-11-21T07:20:20.833Z">
 <meta property="article:author" content="TT">
 <meta property="article:tag" content="双指针">
 <meta property="article:tag" content="题解">
-<meta property="article:tag" content="题解【详细】">
 <meta name="twitter:card" content="summary">
     <link rel="alternate" href="/atom.xml" title="TT's Blog" type="application/atom+xml">
     <link rel="shortcut icon" href="/images/icon.ico">
@@ -163,11 +162,11 @@
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">3</div>
+    <div class="sidebar-state-number">2</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">9</div>
+    <div class="sidebar-state-number">7</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -229,7 +228,7 @@
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
     <time datetime="2026-11-12T09:52:50.000Z" itemprop="datePublished">2026-11-12</time>
-    <time style="display: none;" id="post-update-time">2026-11-12</time>
+    <time style="display: none;" id="post-update-time">2026-11-21</time>
   </span>
 </div>
 
@@ -330,15 +329,15 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> for_i(i,l,r) for(int i=(l);i&lt;=(r);i++)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> for_j(i,r,l) for(int i=(r);i&gt;=(l);i--)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> endl <span class="string">&#x27;\n&#x27;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">2e5</span><span class="number">+10</span>;</span><br><span class="line"><span class="type">int</span> n,m,p1=<span class="number">1</span>,p2=<span class="number">1</span>,tmp,now,ansx,ansy,ans;</span><br><span class="line"><span class="type">int</span> a[N],b[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="number">0</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line"><span class="comment">//    freopen(&quot;.in&quot;,&quot;r&quot;,stdin);</span></span><br><span class="line"><span class="comment">//    freopen(&quot;.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    for_i(i,<span class="number">1</span>,n) cin&gt;&gt;a[i];</span><br><span class="line">    cin&gt;&gt;m;</span><br><span class="line">    for_i(i,<span class="number">1</span>,m) cin&gt;&gt;b[i];</span><br><span class="line">    <span class="built_in">sort</span>(a<span class="number">+1</span>,a<span class="number">+1</span>+n);</span><br><span class="line">    <span class="built_in">sort</span>(b<span class="number">+1</span>,b<span class="number">+1</span>+m);</span><br><span class="line">    <span class="keyword">while</span>(p1&lt;=n||p2&lt;=m)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>((a[p1]&lt;b[p2]||p2&gt;m)&amp;&amp;p1&lt;=n)</span><br><span class="line">        &#123;</span><br><span class="line">            now=(n-p1<span class="number">+1</span>)-(m-p2<span class="number">+1</span>);</span><br><span class="line">            <span class="keyword">if</span>(now&gt;ans)</span><br><span class="line">            &#123;</span><br><span class="line">                ansx=(n-p1<span class="number">+1</span>);</span><br><span class="line">                ansy=(m-p2<span class="number">+1</span>);</span><br><span class="line">                ans=now;</span><br><span class="line">            &#125;</span><br><span class="line">            tmp=a[p1];</span><br><span class="line">            <span class="keyword">while</span>(a[p1]==tmp) p1++;</span><br><span class="line">            <span class="keyword">while</span>(b[p2]==tmp) p2++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            now=(n-p1<span class="number">+1</span>)-(m-p2<span class="number">+1</span>);</span><br><span class="line">            <span class="keyword">if</span>(now&gt;ans)</span><br><span class="line">            &#123;</span><br><span class="line">                ansx=(n-p1<span class="number">+1</span>);</span><br><span class="line">                ansy=(m-p2<span class="number">+1</span>);</span><br><span class="line">                ans=now;</span><br><span class="line">            &#125;</span><br><span class="line">            tmp=b[p2];</span><br><span class="line">            <span class="keyword">while</span>(a[p1]==tmp) p1++;</span><br><span class="line">            <span class="keyword">while</span>(b[p2]==tmp) p2++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;n*<span class="number">2</span>+ansx&lt;&lt;<span class="string">&quot;:&quot;</span>&lt;&lt;m*<span class="number">2</span>+ansy;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
     <footer class="article-footer">
-        <a class="article-category-link" href="/categories/%E9%A2%98%E8%A7%A3%E3%80%90%E8%AF%A6%E7%BB%86%E3%80%91/" title="题解【详细】" data-aos="zoom-in">题解【详细】</a>
+        <a class="article-category-link" href="/categories/%E9%A2%98%E8%A7%A3/" title="题解" data-aos="zoom-in">题解</a>
 
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag" title="双指针">双指针</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag" title="题解">题解</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3%E3%80%90%E8%AF%A6%E7%BB%86%E3%80%91/" rel="tag" title="题解【详细】">题解【详细】</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag" title="双指针">双指针</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag" title="题解">题解</a></li></ul>
 
     </footer>
   </div>
     <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
     <div class="article-nav-link-wrap right">
-          <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=1" data-sizes="auto" alt="异或 题解" class="lazyload">
+          <img data-src="https://api.bimg.cc/random?w=800&amp;h=600&amp;n=2" data-sizes="auto" alt="异或 题解" class="lazyload">
       <a href="/2026/08/15/%E5%BC%82%E6%88%96-%E9%A2%98%E8%A7%A3/" aria-label="后一篇: 异或 题解"  title="后一篇: 异或 题解"></a>
       <div class="article-nav-caption">后一篇</div>
       <h3 class="article-nav-title">
@@ -427,11 +426,11 @@
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">3</div>
+    <div class="sidebar-state-number">2</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">9</div>
+    <div class="sidebar-state-number">7</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -573,7 +572,7 @@
           description: "",
           stripContent: " x:y 题解  原题目  x:y  OJ PID：P5127 时空限制：1000ms / 256MiB  题目描述 给定两个序列 a1,a2,…,ana_1,a_2,\ldots,a_na1​,a2​,…,an​ 和 b1,b2,…,bmb_1,b_2,\ldots,b_mb1​,b2​,…,bm​。 请你确定一个整数 ddd，然后对 a,ba,ba,b 两个序列分别计算分数。序列的分数计算方式如下：序列中每有一个数字大于等于 ddd 记 333 分，每有一个数字小于 ddd 记 222 分。",
           date: "Thu Nov 12 2026 17:52:50 GMT+0800",
-          updated: "Thu Nov 12 2026 20:31:28 GMT+0800",
+          updated: "Sat Nov 21 2026 15:20:20 GMT+0800",
           cover: "/images/banner.png",
         };
       </script>
